@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>我的第一篇博客文章</title>
+    <title>搭建博客</title>
     <link href="/2020/03/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/"/>
     <url>/2020/03/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
     
-    <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容<br><img src="/img/59227795c9dac.bmp" srcset="/img/loading.gif" alt=""></p><hr><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>内容</p><hr><h2 id="引用文献"><a href="#引用文献" class="headerlink" title="引用文献"></a>引用文献</h2><p><a href="http://www.codesheep.cn" target="_blank" rel="noopener">www.codesheep.cn</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>寒假疫情来袭不开学，在家有点闲，之前就想搭建一个网站，现在突然就更想搭建一个属于自己的网站，于是上网搜索相关资料动手搭建。</p><hr><h2 id="搭建博客和更换主题"><a href="#搭建博客和更换主题" class="headerlink" title="搭建博客和更换主题"></a>搭建博客和更换主题</h2><p>在印象里记得自己关注的一个up主codesheep发布了一个从0搭建blog的视频，链接如下：<br><a href="https://www.bilibili.com/video/av44544186?t=1557" target="_blank" rel="noopener"> bilibili视频biu~</a></p><p>按照视频步骤及弹幕大佬的帮助下成功搭建起自己的简陋博客。由于当时忘记截图纪念，又换了主题所以无图证明。github上搜索hexo主题，找到一个比较好看的主题<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener"> Fluid </a></p><p>可以在网页上点击”Clone or download”下载，也可以进入cmd在博客所在的目录下输入</p><p><code>git clone https://github.com/fluid-dev/hexo-theme-fluid.git theme/fluid</code></p><p>然后按照fluid<a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="noopener">指南配置</a>配置</p><p>然后在cmd框输入以下命令</p><pre><code>hexo clean     # 清理一下hexo g         # 重新生成hexo s        # 启动（在本地启动）hexo d        # 推到github上</code></pre><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://eatrice.top/post/从0开始搭建一个hexo博客/" target="_blank" rel="noopener">https://eatrice.top/post/从0开始搭建一个hexo博客/</a><br><a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="noopener">https://hexo.fluid-dev.com/docs/guide/</a></p><hr><p>这是第一次写博客记录，现在是大二下，希望自己可以持之以恒努力优秀！</p>]]></content>
     
     
     
