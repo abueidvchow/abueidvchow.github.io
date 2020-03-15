@@ -157,8 +157,48 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/03/15/CTF%E4%B9%8B%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/" target="_self">
+          <img src="/img/luffy.jpg" srcset="/img/loading.gif" alt="CTF之上传绕过类型总结"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/03/15/CTF%E4%B9%8B%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">CTF之上传绕过类型总结</p>
+      </a>
+
+      <a href="/2020/03/15/CTF%E4%B9%8B%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+上传绕过类型总结上传绕过类型在CTF里挺常见的，而且绕过类型多种，所以为此做一下总结。
+
+%00截断%00截断在做CGCTF-上传绕过时遇到，当提交.jpg后缀名的文件时，提示要上传.php后缀名，当上传.php格式的文件时，又要求上传.jpg格式的文件。
+先说一下，在网站上传时，网站前端会检查上传文件的后缀名，例如上传xxx.php%00.jpg，后缀名是合法的.jpg格式，可以上传，然后在保存文件时，遇到%00字段，会把后面的.jpg丢弃掉，然后最终文件保存为xxx.php。
+解决方法：上传一个xxx.php%00.jpg的文件，用bp抓包，然后修改十六进制，找到xxx.php%00.j</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-15&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2/" target="_self">
-          <img src="/img/luffy.jpg" srcset="/img/loading.gif" alt="域名更换"
+          <img src="/img/article/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2/%E5%9F%9F%E5%90%8D.png" srcset="/img/loading.gif" alt="域名更换"
                class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>

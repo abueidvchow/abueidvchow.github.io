@@ -17,7 +17,7 @@
   <meta name="description" content="记录ctf做题解法积累知识">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - ztl</title>
+  <title>CTF之上传绕过类型总结 - ztl</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -119,7 +119,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/1.png') no-repeat center center;
+         style="background: url('/img/luffy.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -128,6 +128,40 @@
               
             </span>
 
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期日, 三月 15日 2020, 11:19 上午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    258 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
             
           </div>
 
@@ -139,55 +173,94 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/15/CTF%E4%B9%8B%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CTF之上传绕过类型总结</span>
-      <span style="float: right;">03-15</span>
-    </a>
-  
-    
-    <a href="/2020/03/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">域名更换</span>
-      <span style="float: right;">03-14</span>
-    </a>
-  
-    
-    <a href="/2020/03/12/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">搭建博客</span>
-      <span style="float: right;">03-12</span>
-    </a>
-  
-    
-    <a href="/2020/03/12/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <span style="float: right;">03-12</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p
+                class="note note-warning">本文最后更新于：星期日, 三月 15日 2020, 4:54 下午</p>
+            
+            <div class="markdown-body">
+              <hr>
+<h2 id="上传绕过类型总结"><a href="#上传绕过类型总结" class="headerlink" title="上传绕过类型总结"></a>上传绕过类型总结</h2><p>上传绕过类型在CTF里挺常见的，而且绕过类型多种，所以为此做一下总结。</p>
+<hr>
+<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>%00截断在做CGCTF-上传绕过时遇到，当提交.jpg后缀名的文件时，提示要上传.php后缀名，当上传.php格式的文件时，又要求上传.jpg格式的文件。</p>
+<p>先说一下，在网站上传时，网站前端会检查上传文件的后缀名，例如上传xxx.php%00.jpg，后缀名是合法的.jpg格式，可以上传，然后在保存文件时，遇到%00字段，会把后面的.jpg丢弃掉，然后最终文件保存为xxx.php。</p>
+<p>解决方法：上传一个xxx.php%00.jpg的文件，用bp抓包，然后修改十六进制，找到xxx.php%00.jpg所在的hex，然后把20改成00，或者也可以把xxx.php%00.jpg改成xxx.php+(+在hex里是00)</p>
+<table>
+    <tr>
+        <td bgcolor=orange> 
+            %00在许多语言中通常被当作终止符。
+        </td>
+    </tr>
+</table>
+<font color=#00ffff size=3>color=#00ffff</font>
 
-
-              </div>
+<hr>
+<h3 id="第二个"><a href="#第二个" class="headerlink" title="第二个"></a>第二个</h3><p>内容</p>
+<hr>
+<h3 id="第三个"><a href="#第三个" class="headerlink" title="第三个"></a>第三个</h3>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/2020/03/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2/">
+                        <span>域名更换</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
+                <!-- Comments -->
+                <div class="comments" id="comments">
+                  
+                  
+
+                </div>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -272,6 +345,57 @@
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
 
 
   <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
@@ -302,7 +426,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "CTF之上传绕过类型总结&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

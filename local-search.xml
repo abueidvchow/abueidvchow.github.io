@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>CTF之上传绕过类型总结</title>
+    <link href="/2020/03/15/CTF%E4%B9%8B%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/"/>
+    <url>/2020/03/15/CTF%E4%B9%8B%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<hr><h2 id="上传绕过类型总结"><a href="#上传绕过类型总结" class="headerlink" title="上传绕过类型总结"></a>上传绕过类型总结</h2><p>上传绕过类型在CTF里挺常见的，而且绕过类型多种，所以为此做一下总结。</p><hr><h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>%00截断在做CGCTF-上传绕过时遇到，当提交.jpg后缀名的文件时，提示要上传.php后缀名，当上传.php格式的文件时，又要求上传.jpg格式的文件。</p><p>先说一下，在网站上传时，网站前端会检查上传文件的后缀名，例如上传xxx.php%00.jpg，后缀名是合法的.jpg格式，可以上传，然后在保存文件时，遇到%00字段，会把后面的.jpg丢弃掉，然后最终文件保存为xxx.php。</p><p>解决方法：上传一个xxx.php%00.jpg的文件，用bp抓包，然后修改十六进制，找到xxx.php%00.jpg所在的hex，然后把20改成00，或者也可以把xxx.php%00.jpg改成xxx.php+(+在hex里是00)</p><table>    <tr>        <td bgcolor=orange>             %00在许多语言中通常被当作终止符。        </td>    </tr></table><font color=#00ffff size=3>color=#00ffff</font><hr><h3 id="第二个"><a href="#第二个" class="headerlink" title="第二个"></a>第二个</h3><p>内容</p><hr><h3 id="第三个"><a href="#第三个" class="headerlink" title="第三个"></a>第三个</h3>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>域名更换</title>
     <link href="/2020/03/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2/"/>
     <url>/2020/03/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2/</url>
